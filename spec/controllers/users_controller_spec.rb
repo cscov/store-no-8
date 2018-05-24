@@ -16,4 +16,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "POST #new"
+    context 'with valid params'
+      it "logs in the user"
+
+    context "with invalid params"
+      it "flashes errors"
+
 end
