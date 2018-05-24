@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::UsersController, type: :controller do
 
-  describe "POST #create" #do
+  describe "POST #create" do
     # context 'with valid params' do
     #   it "logs in the user" do
     #     User.create(email_address: "c@gmail.com", password: "123456", first_name: "Carolyn")
