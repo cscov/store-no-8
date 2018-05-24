@@ -7,7 +7,7 @@ describe :User, :type => :model do
     User.new(first_name: 'Carolyn', email_address: "cscov@email.com")
   }
   let(:user2) {
-    User.new(first_name: 'Bob', email_address: "cscov@gmail.com")
+    User.create!(first_name: 'Bob', email_address: "cscov@gmail.com")
   }
 
   context 'has required attributes' do
@@ -20,6 +20,8 @@ describe :User, :type => :model do
   end
   it 'only allows unique email addresses' do
     user.password = '123456'
-    expect { :user2.create! }.to raise_error("Email address already exists")
+    expect {
+    User.create!(first_name: 'Bob', email_address: "cscov@gmail.com")
+    }.to raise_error
   end
 end
