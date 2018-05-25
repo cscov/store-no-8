@@ -6,7 +6,7 @@ class Api::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
+ 
   def create
     @order = Order.new
     @order.user_id = @current_user.id
@@ -37,7 +37,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
 end
