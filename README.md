@@ -43,10 +43,26 @@ Once there, you should be able to see the login screen and be able to click arou
 | `first_name`      | string | not null |
 | `password_digest`      | string | not null |
 | `session_token`      | string | not null |
-| `email_address`      | string | not null, unique |
+| `email_address`      | string | not null, unique, indexed |
 
 * Index on email_address for fast lookup of a common search term, and because it is also required to be unique.
 
 * Additions: `password_digest` and `session_token` were added in order to facilitate backend user authentication. I wanted to do authentication because in the scenario of users and orders, users should only be able to see their own orders. For that to happen, they must be authenticated.
+
+#### orders
+| Column Name        | Data Type           | Details  |
+| ------------- |:-------------:| :-----:|
+| `id`      | integer | primary key, not null |
+| `user_id`      | integer | foreign_key, not null, indexed |
+| `order_total`      | decimal |  |
+| `order_status`      | string |  |
+
+* Index on `user_id` because it is convention to create an index on foreign keys, and because this way, a given user's orders can be pulled up more quickly.
+
+* Additions: `order_total` was added so that an order's total cost could be dynamically updated if the user was able to edit their order. `order_status` was added to indicate whether an order was able to be updated or cancelled. The options for this attribute are "processing" and "completed". "Processing" indicates the order can be edited or cancelled, while "completed" indicates that it is too late to make any changes.
+Items will be covered under associations.
+
+#### items
+
 
 ### Models
