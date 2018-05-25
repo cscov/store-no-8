@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'rspec'
 
 RSpec.describe Order, type: :model do
-  let(:customer) { double("customer") }
+  let(:customer) { double("user", id: 1) }
   subject(:order) { Order.new(user_id: customer.id) }
   let(:item1) { double("item", name: "bell peppers", price: 1.50, order_id: order.id) }
   let(:item1) { double("item", name: "chocolate ice cream", price: 8.50, order_id: order.id) }

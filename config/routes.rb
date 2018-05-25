@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :api, defaults: { format: :json } do
+  namespace :api do
     resources :users, only: %i[new create] do
       resources :orders, only: %i[index new create edit update show]
     end

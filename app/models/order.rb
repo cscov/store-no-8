@@ -1,3 +1,4 @@
+
 class Order < ApplicationRecord
   validates :user_id, presence: true
 
@@ -5,11 +6,11 @@ class Order < ApplicationRecord
   belongs_to :user
 
   def order_total
-    total = 0
+    total = 0.00
     self.items.each do |item|
       total += item.price
     end
-    total
+    number_to_currency(total)
   end
 
 end

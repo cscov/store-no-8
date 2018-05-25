@@ -1,2 +1,8 @@
 <h1>Api::Orders#show</h1>
-<p>Find me in app/views/api/orders/show.html.erb</p>
+<section>
+  <%@current_user.orders.first.items.each do |item| %>
+    <%= item.name %>
+    <%= item.price %>
+  <% end %>
+
+</section>
