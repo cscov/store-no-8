@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
                                     params[:user][:password])
     if @user
       login(@user)
-      render api_user_orders
+      redirect_to api_user_orders
     else
       flash[:errors] = ["Invalid password/email combination"]
       render :new
