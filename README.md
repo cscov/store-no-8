@@ -28,9 +28,25 @@ Once the database has been created, you need to set up your local server to inte
 3. In your browser, copy the following URL into the browser bar: `localhost:3000/`
 Once there, you should be able to see the login screen and be able to click around as expected.
 
+## How to test
+1. Open a new tab in your terminal
+2. To execute all tests at once, run the following command: `bundle exec rspec`
 
 
+## Project Details
 
+### Tables
+#### users
+| Column Name        | Data Type           | Details  |
+| ------------- |:-------------:| :-----:|
+| `id`      | integer | primary key, not null |
+| `first_name`      | string | not null |
+| `password_digest`      | string | not null |
+| `session_token`      | string | not null |
+| `email_address`      | string | not null, unique |
 
+* Index on email_address for fast lookup of a common search term, and because it is also required to be unique.
 
-* How to run the test suite
+* Additions: `password_digest` and `session_token` were added in order to facilitate backend user authentication. I wanted to do authentication because in the scenario of users and orders, users should only be able to see their own orders. For that to happen, they must be authenticated.
+
+### Models
