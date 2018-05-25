@@ -18,6 +18,10 @@ class Api::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def destroy
+
+  end
+
   def order_params
     params.require(:order).permit(:user_id)
   end
