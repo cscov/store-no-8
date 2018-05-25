@@ -3,14 +3,15 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      render json: @user
+      redirect_to api_user_orders_url(@current_user)
     else
-      render json: @user.errors.full_messages, status: 401
+      flash[:errors] = @user.errors.full_messages
     end
   end
 
   def new
     @user = User.new
+    render :new
   end
 
   def user_params

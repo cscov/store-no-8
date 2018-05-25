@@ -9,6 +9,16 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <%= current_user.first_name %>
+      <%= button_to "Log Out", api_session_url, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", new_api_user_url %>
+      <%= link_to "Log In", new_api_session_url %>
+      <% flash[:errors].try(:each) do |err| %>
+        <%= err %>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

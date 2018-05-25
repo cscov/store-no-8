@@ -12,13 +12,17 @@ RSpec.describe Api::UsersController, type: :controller do
       it "redirects to the user's orders index on success" do
         post :create, params: {
           user: {
-            email_address: "c@gmail.com",
+            email_address: "cscov@gmail.com",
             password: "123456",
-            first_name: "Carolyn"
+            first_name: "Carolyn",
+            id: 1,
+          },
+          order: {
+            user_id: 1
           }
         }
 
-        expect(response).to redirect_to(api_user_order_url)
+        expect(response).to redirect_to(api_user_orders_url(43))
       end
 
       it "logs in the user" do
@@ -36,8 +40,14 @@ RSpec.describe Api::UsersController, type: :controller do
 
     context "with invalid params" do
       it "flashes errors and renders the new users template" do
-        user = User.create(email_address: "c@gmail.com", password: "123",
-        first_name: "carolyn")
+        post :create, params: {
+          user: {
+            email_address: "c@gmail.com",
+            password: "123",
+            first_name: "Carolyn"
+          },
+          id: 1
+        }
 
         expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
         expect(user.errors[:email_address]).to_not include("can't be blank")
