@@ -9,6 +9,7 @@ class Api::SessionsController < ApplicationController
                                     params[:user][:password])
     if @user
       login(@user)
+      render api_user_orders
     else
       flash[:errors] = ["Invalid password/email combination"]
       render :new
@@ -16,6 +17,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-
+    logout
+    render :new
   end
 end

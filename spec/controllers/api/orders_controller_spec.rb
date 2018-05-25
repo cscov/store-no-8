@@ -13,7 +13,7 @@ RSpec.describe Api::OrdersController, type: :controller do
     describe "POST #create" do
       it "adds a new order to the current user's list of orders"
 
-      it "displays the new order in the orders index"
+      it "displays the order show page"
     end
 
     describe "GET #edit" do
