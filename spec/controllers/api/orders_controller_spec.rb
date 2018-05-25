@@ -13,6 +13,16 @@ RSpec.describe Api::OrdersController, type: :controller do
           expect(response).to render_template(:index)
         end
       end
+
+      context "when logged out" do
+        before do
+          allow(controller).to receive(:current_user) { nil }
+        end
+        it "redirects to the login page" do
+          get :index
+          expect(response).to redirect_to(new_api_session)
+        end
+      end
     end
 
     describe "GET #new" do
@@ -23,6 +33,16 @@ RSpec.describe Api::OrdersController, type: :controller do
         it "displays the new order page" do
           get :new
           expect(response).to render_template(:new)
+        end
+      end
+
+      context "when logged out" do
+        before do
+          allow(controller).to receive(:current_user) { nil }
+        end
+        it "redirects to the login page" do
+          get :new
+          expect(response).to redirect_to(new_api_session)
         end
       end
     end
@@ -43,6 +63,16 @@ RSpec.describe Api::OrdersController, type: :controller do
 
         it "displays the order show page" do
           expect(response).to redirect_to(api_user_order_url(Order.last))
+        end
+      end
+
+      context "when logged out" do
+        before do
+          allow(controller).to receive(:current_user) { nil }
+        end
+        it "redirects to the login page" do
+          get :index
+          expect(response).to redirect_to(new_api_session)
         end
       end
     end
