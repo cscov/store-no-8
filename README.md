@@ -123,15 +123,30 @@ All routes are nested under an `api` namespace.
 
 #### items
 * `GET api/items` Displays a list of all available items
-* `GET api/items/:id` Displays a specific item 
+* `GET api/items/:id` Displays a specific item
 
 ### Views
-Because this is a backend project, I decided to keep the route content rendered in html and embedded ruby templates rather than using json and a framework such as React to render the views.
+Because this is a backend project, I decided to keep the route content rendered in html and embedded ruby templates rather than using JSON and a framework such as React to render the views.
+
+#### navigation
+* When the user is not logged in, a 'log in' button and 'sign up' button appear at the top of the screen.
+* When the user is logged in, a 'welcome, {user.first_name}' message appears at the top of the screen with a 'log out' button.
 
 #### users
+* New: Displays the sign up page
 
 #### session
+* New: Displays the login page
 
 #### orders
+* Index: Displays the current user's orders. Order id links go to the 'order show' view
+* Show: Displays a specific order (items, item prices, order total, order status) for the current user. If the order status is "processing", there will be an 'edit order' button and a 'cancel order' button present.
+* New: Displays a new blank order and the list of items and prices available to add to the order.
+  * An item will have an 'add to order' button next to it.
+  * Once it has been added to the order, it will appear in the order list with a 'remove from order' button next to it.
+The new order page will also have a 'cancel order' button, that will remove the order from the current user's list of orders and bring the user back to the order index page.
+* Edit: Displays a particular order for the current user with the ability to add and remove items from the order, as well as cancel the order.
 
 #### items
+* Index: Displays a list of all items along with their prices.
+* Show: Displays a page for a specific item. The page includes the item name and item price.
