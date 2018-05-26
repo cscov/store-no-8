@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'rspec'
 
-RSpec.describe Api::OrdersController, type: :controller do
+RSpec.describe OrdersController, type: :controller do
   let(:carolyn) { User.first }
 
     describe "GET #index" do

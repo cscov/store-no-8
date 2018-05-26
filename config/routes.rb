@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :api do
     resources :users, only: %i[new create] do
       resources :orders
     end
@@ -10,4 +9,3 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#root'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end

@@ -1,4 +1,4 @@
-class Api::OrdersController < ApplicationController
+class OrdersController < ApplicationController
   before_action :require_login
 
   def index

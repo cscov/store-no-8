@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::UsersController, type: :controller do
+RSpec.describe UsersController, type: :controller do
   describe "GET #new" do
     it "renders the new users template" do
       get :new

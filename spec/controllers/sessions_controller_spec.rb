@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'rspec'
 
-RSpec.describe Api::SessionsController, type: :controller do
+RSpec.describe SessionsController, type: :controller do
   describe "GET #new" do
     it "renders the login form" do
       get :new
