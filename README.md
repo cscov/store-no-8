@@ -100,7 +100,7 @@ Items will be covered under associations.
 * Associations: An `order_items` belongs to an `order` and belongs to an `item`
 
 ### Controllers and Routes
-All routes are nested under an `api` namespace.
+All routes are nested under an `api` namespace with the exception of the homepage (root).
 
 #### users
 * `GET api/users/new` renders the sign up view
