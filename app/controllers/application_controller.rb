@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless current_user
-      render json: [`Please log in to continue`], status: 401
+    unless logged_in?
+      redirect_to new_api_session_url
     end
   end
 

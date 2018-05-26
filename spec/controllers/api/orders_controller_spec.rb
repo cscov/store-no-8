@@ -1,7 +1,8 @@
 require 'rails_helper'
+require 'rspec'
 
 RSpec.describe Api::OrdersController, type: :controller do
-  let(:carolyn) { User.create!(email_address: "c@gmail.com", password: "123456", first_name: "Carolyn") }
+  let(:carolyn) { User.first }
 
     describe "GET #index" do
       context "when logged in" do
@@ -9,7 +10,7 @@ RSpec.describe Api::OrdersController, type: :controller do
           allow(controller).to receive(:current_user) { carolyn }
         end
         it "displays all orders for the current user" do
-          get :index
+          get :index, params: { user_id: 1 }
           expect(response).to render_template(:index)
         end
       end
@@ -19,8 +20,8 @@ RSpec.describe Api::OrdersController, type: :controller do
           allow(controller).to receive(:current_user) { nil }
         end
         it "redirects to the login page" do
-          get :index
-          expect(response).to redirect_to(new_api_session)
+          get :index, params: { user_id: 1 }
+          expect(response).to redirect_to(new_api_session_url)
         end
       end
     end

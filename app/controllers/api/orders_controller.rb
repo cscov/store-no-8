@@ -2,7 +2,8 @@ class Api::OrdersController < ApplicationController
   before_action :require_login
 
   def index
-    @current_user.orders
+    @orders = @current_user.orders
+    @orders.user_id = @current_user.id
   end
 
   def new
@@ -10,7 +11,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.user_id = @current_user.id
     if @order.save
       redirect_to api_user_order_url(@order)
@@ -42,6 +43,10 @@ class Api::OrdersController < ApplicationController
     order = current_user.orders.find(params[:id])
     delete(order)
     redirect_to api_user_orders_url
+  end
+
+  def order_params
+    params.require(:order).permit(:user_id)
   end
 
 end
