@@ -53,13 +53,11 @@ Once there, you should be able to see the login screen and be able to click arou
 | Column Name        | Data Type           | Details  |
 | ------------- |:-------------:| :-----:|
 | `id`      | integer | primary key, not null |
-| `user_id`      | integer | foreign key, not null, indexed |
-| `order_total`      | decimal |  |
 | `order_status`      | string |  |
 
 * Index on `id`. Index on `user_id` because it is convention to create an index on foreign keys, and because this way, a given user's orders can be pulled up more quickly.
 
-* Additions: `order_total` was added so that an order's total cost could be dynamically updated if the user was able to edit their order. `order_status` was added to indicate whether an order was able to be updated or cancelled. The options for this attribute are "processing" and "completed". "Processing" indicates the order can be edited or cancelled, while "completed" indicates that it is too late to make any changes.
+* Additions: `order_status` was added to indicate whether an order was able to be updated or cancelled. The options for this attribute are "processing" and "completed". "Processing" indicates the order can be edited or cancelled, while "completed" indicates that it is too late to make any changes.
 Items will be covered under associations.
 
 #### items
@@ -68,8 +66,20 @@ Items will be covered under associations.
 | `id`      | integer | primary key, not null |
 | `name`      | string | not null |
 | `price`      | decimal | not null |
-| `order_id`      | integer | foreign key, indexed |
 
-* Index on `id`. Index on `order_id` again because of convention and also for quick look-up of the items associated with a particular order
+* Index on `id`.
+
+* Additions: `price` was added because in a real world scenario, every item in an order would have a price.
+
+#### order_items
 
 ### Models
+
+#### users
+
+#### orders
+* Additions: `order_total` was added so that an order's total cost could be dynamically updated if the user was able to edit their order.
+
+#### items
+
+#### order_items
