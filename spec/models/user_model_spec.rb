@@ -17,6 +17,7 @@ describe :User, :type => :model do
     it { should validate_length_of(:password) }
     it { should validate_presence_of(:email_address) }
     it { should have_many(:orders) }
+    it { should have_many(:items) }
   end
   it 'only allows unique email addresses' do
     user.password = '123456'

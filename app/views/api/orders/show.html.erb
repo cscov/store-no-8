@@ -1,6 +1,6 @@
 <h1>Api::Orders#show</h1>
 <section>
-  <%@current_user.orders.first.items.each do |item| %>
+  <%@order.items.each do |item| %>
     <%= item.name %>
     <%= item.price %>
   <% end %>
