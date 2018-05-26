@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'rspec'
 
-RSpec.describe ItemsController, type: :controller do
+RSpec.describe Api::ItemsController, type: :controller do
   describe "GET #index" do
     it "displays all available items" do
       get :index
