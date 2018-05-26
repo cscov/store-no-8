@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :orders
     end
     resource :session, only: %i[new create destroy]
-    resources :items, only: %i[index, show]
+    resources :items, only: %i[index show]
 
   end
 

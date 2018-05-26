@@ -122,6 +122,8 @@ All routes are nested under an `api` namespace.
 * `DELETE api/users/:user_id/orders/:id` Deletes the current order if it does not have an order status of "completed"
 
 #### items
+* `GET api/items` Displays a list of all available items
+* `GET api/items/:id` Displays a specific item 
 
 ### Views
 Because this is a backend project, I decided to keep the route content rendered in html and embedded ruby templates rather than using json and a framework such as React to render the views.
