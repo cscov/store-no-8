@@ -72,6 +72,15 @@ Items will be covered under associations.
 * Additions: `price` was added because in a real world scenario, every item in an order would have a price.
 
 #### order_items
+| Column Name        | Data Type           | Details  |
+| ------------- |:-------------:| :-----:|
+| `id`      | integer | primary key, not null |
+| `order_id`      | integer | foreign key, not null, indexed |
+| `item_id`      | integer | foreign key, not null, indexed |
+
+* Indexes on `id`, `order_id`, `item_id`
+
+* This table was added to create a many-to-many association between orders and items. 
 
 ### Models
 
