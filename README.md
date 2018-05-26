@@ -80,11 +80,13 @@ Items will be covered under associations.
 
 * Indexes on `id`, `order_id`, `item_id`
 
-* This table was added to create a many-to-many association between orders and items. 
+* This table was added to create a many-to-many association between orders and items.
 
 ### Models
-
 #### users
+* Associations: A `user` has many `orders` and has many `items` through `orders`
+
+* Validations: The user's password must be at least 6 characters
 
 #### orders
 * Additions: `order_total` was added so that an order's total cost could be dynamically updated if the user was able to edit their order.
