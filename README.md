@@ -128,9 +128,10 @@ All routes are nested under an `api` namespace.
 ### Views
 Because this is a backend project, I decided to keep the route content rendered in html and embedded ruby templates rather than using JSON and a framework such as React to render the views.
 
-#### navigation
+#### global navigation
 * When the user is not logged in, a 'log in' button and 'sign up' button appear at the top of the screen.
 * When the user is logged in, a 'welcome, {user.first_name}' message appears at the top of the screen with a 'log out' button.
+* The 'home' screen displays a link to the current user's orders and the item index. If no one is logged in, the order index link will redirect to the login view.
 
 #### users
 * New: Displays the sign up page
