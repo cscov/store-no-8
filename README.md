@@ -80,7 +80,7 @@ Items will be covered under associations.
 
 * Indexes on `id`, `order_id`, `item_id`
 
-* This table was added to create a many-to-many association between orders and items.
+* This joins table was added to create a many-to-many association between orders and items.
 
 ### Models
 #### users
@@ -91,6 +91,30 @@ Items will be covered under associations.
 #### orders
 * Additions: `order_total` was added so that an order's total cost could be dynamically updated if the user was able to edit their order.
 
+* Associations: An `order` has many `order-items` and has many `items` through `order-items`. An `order` also belongs to a `user`.
+
 #### items
+* Associations: An `item` has many `order_items` and has many `orders` through `order_items`
 
 #### order_items
+* Associations: An `order_items` belongs to an `order` and belongs to an `item`
+
+### Controllers and Routes
+
+#### users
+
+#### session
+
+#### orders
+
+#### items
+
+### Views
+
+#### users
+
+#### session
+
+#### orders
+
+#### items 
