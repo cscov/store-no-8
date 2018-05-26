@@ -1,5 +1,9 @@
 class Item < ApplicationRecord
   validates :name, :price, presence: true
 
-  belongs_to :order
+  has_many :order_items
+
+  has_many :orders,
+           through: :order_items,
+           source: :order
 end

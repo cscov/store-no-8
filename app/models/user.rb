@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   has_many :orders
 
+  has_many :items,
+           through: :orders,
+           source: :items
+
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
