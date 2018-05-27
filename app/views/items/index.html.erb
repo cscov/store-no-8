@@ -1,0 +1,11 @@
+<h1>All Available Items</h1>
+<section>
+  <ul>
+   <% @items.each do |item| %>
+    <li>
+      <span>item.name</span>
+      <span><%=humanized_money item.price_cents%></span>
+    </li>
+   <% end %>
+  </ul>
+</section>
