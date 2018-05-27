@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       redirect_to user_orders_url(@current_user)
     else
       flash[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 

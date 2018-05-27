@@ -22,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
           }
         }
 
-        expect(response).to redirect_to(user_orders_url(43))
+        expect(response).to redirect_to(user_orders_url(User.last))
       end
 
       it "logs in the user" do
@@ -39,7 +39,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "with invalid params" do
-      it "flashes errors and renders the new users template" do
+      it "flashes errors" do
         post :create, params: {
           user: {
             email_address: "c@gmail.com",
@@ -49,10 +49,20 @@ RSpec.describe UsersController, type: :controller do
           id: 1
         }
 
-        expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
-        expect(user.errors[:email_address]).to_not include("can't be blank")
-        expect(user.errors[:first_name]).to_not include("can't be blank")
+        expect(flash[:errors]).to be_present
+      end
+
+      it "renders the new template" do
+        post :create, params: {
+          user: {
+            email_address: "c@gmail.com",
+            password: "123",
+            first_name: "Carolyn"
+          },
+          id: 1
+        }
         expect(response).to render_template(:new)
+
       end
     end
   end
