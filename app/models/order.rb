@@ -15,7 +15,7 @@ class Order < ApplicationRecord
     self.items.each do |item|
       total += item.price
     end
-    number_to_currency(total)
+    total
   end
 
 end

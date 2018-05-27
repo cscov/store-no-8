@@ -2,8 +2,7 @@ class OrdersController < ApplicationController
   before_action :require_login
 
   def index
-    @orders = @current_user.orders
-    @orders.user_id = @current_user.id
+    @orders = current_user.orders
   end
 
   def new
@@ -12,7 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user_id = @current_user.id
+    @order.user_id = current_user.id
     if @order.save
       redirect_to user_order_url(@order)
     else

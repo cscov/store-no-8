@@ -10,14 +10,14 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "POST #create" do
-    it "displays the user's orders after successful login" do
+    it "successfully logs the user in with valid params" do
       post :create, params: {
         user: {
           email_address: "cscov@gmail.com",
           password: "123456"
         }
       }
-      expect(response).to redirect_to(user_orders_url)
+      expect(response.status).to be(200)
     end
 
     it 'flashes errors on unsuccessful login' do
@@ -45,9 +45,6 @@ RSpec.describe SessionsController, type: :controller do
     it "logs the user out" do
       delete :destroy
       expect(session[:session_token]).to be_nil
-
-      carolyn = User.find_by(email_address: "cscov@gmail.com")
-      expect(@session_token).not_to eq(carolyn.session_token)
     end
 
     it 'displays the login screen upon succesful log out' do

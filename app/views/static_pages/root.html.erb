@@ -2,7 +2,9 @@
   <h1>Home</h1>
 
   <section>
-    <a href="<%=users/{current_user.id}/orders%>"><<h2>Your Orders</h2></a>
+    <% if logged_in? %>
+      <%= link_to "Your Orders", user_orders_url(user_id: current_user.id) %>
+    <% end %>
   </section>
 
   <section>

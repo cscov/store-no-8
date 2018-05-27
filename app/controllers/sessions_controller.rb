@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_credential(params[:user][:email_address],
+    @user = User.find_by_credentials(params[:user][:email_address],
                                     params[:user][:password])
     if @user
       login(@user)
-      redirect_to user_orders
+      redirect_to user_orders_url(@user)
     else
       flash[:errors] = ["Invalid password/email combination"]
       render :new
