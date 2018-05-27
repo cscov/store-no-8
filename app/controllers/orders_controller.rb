@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = @current_user.id
     if @order.save
-      redirect_to api_user_order_url(@order)
+      redirect_to user_order_url(@order)
     else
       flash[:errors] = @order.errors.full_messages
       render :new
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update_attributes
-      redirect_to api_user_order_url(@order)
+      redirect_to user_order_url(@order)
     else
       flash[:errors] = @order.errors.full_messages
       render :edit
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   def destroy
     order = current_user.orders.find(params[:id])
     delete(order)
-    redirect_to api_user_orders_url
+    redirect_to user_orders_url
   end
 
   def order_params

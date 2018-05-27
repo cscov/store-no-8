@@ -22,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
           }
         }
 
-        expect(response).to redirect_to(api_user_orders_url(43))
+        expect(response).to redirect_to(user_orders_url(43))
       end
 
       it "logs in the user" do

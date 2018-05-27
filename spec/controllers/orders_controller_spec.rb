@@ -21,7 +21,7 @@ RSpec.describe OrdersController, type: :controller do
         end
         it "redirects to the login page" do
           get :index, params: { user_id: 1 }
-          expect(response).to redirect_to(new_api_session_url)
+          expect(response).to redirect_to(new_session_url)
         end
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe OrdersController, type: :controller do
         end
         it "redirects to the login page" do
           get :new
-          expect(response).to redirect_to(new_api_session)
+          expect(response).to redirect_to(new_session_url)
         end
       end
     end
@@ -63,7 +63,7 @@ RSpec.describe OrdersController, type: :controller do
         end
 
         it "displays the order show page" do
-          expect(response).to redirect_to(api_user_order_url(Order.last))
+          expect(response).to redirect_to(user_order_url(Order.last))
         end
       end
 
@@ -73,7 +73,7 @@ RSpec.describe OrdersController, type: :controller do
         end
         it "redirects to the login page" do
           get :index
-          expect(response).to redirect_to(new_api_session)
+          expect(response).to redirect_to(new_session_url)
         end
       end
     end
@@ -101,7 +101,7 @@ RSpec.describe OrdersController, type: :controller do
         context "when order has not been completed" do
           it "deletes the currently viewed order and redirects back to the order index" do
             delete :destroy, params: { id: @order.id, user_id: carolyn.id }
-            expect(response).to redirect_to(api_user_orders)
+            expect(response).to redirect_to(user_orders_url)
             expect(Order.exists?(@order.id)).to be false
           end
         end

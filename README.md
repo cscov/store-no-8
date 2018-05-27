@@ -100,30 +100,29 @@ Items will be covered under associations.
 * Associations: An `order_items` belongs to an `order` and belongs to an `item`
 
 ### Controllers and Routes
-All routes are nested under an `api` namespace with the exception of the homepage (root).
 
 #### users
-* `GET api/users/new` renders the sign up view
-* `POST api/users` adds a new user to the database and redirects to the user's orders page
+* `GET users/new` renders the sign up view
+* `POST users` adds a new user to the database and redirects to the user's orders page
 * Permitted params: `first_name`, `email_address`, `password`
 
 #### session
-* `GET api/session/new` renders the log in view
-* `POST api/session` logs in the user and redirects to the user's orders page
-* `DELETE api/session` logs the user out and redirects to the login view
+* `GET session/new` renders the log in view
+* `POST session` logs in the user and redirects to the user's orders page
+* `DELETE session` logs the user out and redirects to the login view
 
 #### orders
-* `GET api/users/:user_id/orders` displays a list of all orders for the current user
-* `GET api/users/:user_id/orders/new` displays a blank order and a list of items available to add to the order
-* `POST api/users/:user_id/orders` adds a new order to the user's list of orders
-* `GET api/users/:user_id/orders/:id` Displays a specific order for the current user
-* `GET api/users/:user_id/orders/:id/edit` Allows the current user to update a specific order if it has not yet been completed
-* `PATCH api/users/:user_id/orders/:id` Saves the current users's updates to the order in the Database
-* `DELETE api/users/:user_id/orders/:id` Deletes the current order if it does not have an order status of "completed"
+* `GET users/:user_id/orders` displays a list of all orders for the current user
+* `GET users/:user_id/orders/new` displays a blank order and a list of items available to add to the order
+* `POST users/:user_id/orders` adds a new order to the user's list of orders
+* `GET users/:user_id/orders/:id` Displays a specific order for the current user
+* `GET users/:user_id/orders/:id/edit` Allows the current user to update a specific order if it has not yet been completed
+* `PATCH users/:user_id/orders/:id` Saves the current users's updates to the order in the Database
+* `DELETE users/:user_id/orders/:id` Deletes the current order if it does not have an order status of "completed"
 
 #### items
-* `GET api/items` Displays a list of all available items
-* `GET api/items/:id` Displays a specific item
+* `GET items` Displays a list of all available items
+* `GET items/:id` Displays a specific item
 
 ### Views
 Because this is a backend project, I decided to keep the route content rendered in html and embedded ruby templates rather than using JSON and a framework such as React to render the views.

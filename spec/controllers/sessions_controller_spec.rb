@@ -17,7 +17,7 @@ RSpec.describe SessionsController, type: :controller do
           password: "123456"
         }
       }
-      expect(response).to redirect_to(api_user_orders_url)
+      expect(response).to redirect_to(user_orders_url)
     end
 
     it 'flashes errors on unsuccessful login' do

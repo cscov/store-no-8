@@ -1,2 +1,2 @@
-module Api::OrdersHelper
+module OrdersHelper
 end

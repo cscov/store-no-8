@@ -1,9 +1,11 @@
-<<h1>Home</h1>
+<main id="root">
+  <h1>Home</h1>
 
-<section>
-  <a href="<%=api/users/{current_user.id}/orders%>"><<h2>Your Orders</h2></a>
-</section>
+  <section>
+    <a href="<%=users/{current_user.id}/orders%>"><<h2>Your Orders</h2></a>
+  </section>
 
-<section>
-  <a href="api/items"><<h2>Available Items</h2></a>
-</section>
+  <section>
+    <a href="items"><<h2>Available Items</h2></a>
+  </section>
+</main>

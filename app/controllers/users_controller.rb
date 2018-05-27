@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      redirect_to api_user_orders_url(@current_user)
+      redirect_to user_orders_url(@current_user)
     else
       flash[:errors] = @user.errors.full_messages
     end
