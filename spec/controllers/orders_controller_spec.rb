@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'rspec'
 
 RSpec.describe OrdersController, type: :controller do
   authentication = User.create(email_address: "c@gmail.com", password: "123456", first_name: "carolyn")

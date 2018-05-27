@@ -1,6 +1,5 @@
 require 'rails_helper'
-require 'rspec'
-require 'user'
+
 
 describe :User, :type => :model do
   subject(:user) {
@@ -13,7 +12,6 @@ describe :User, :type => :model do
   context 'has required attributes' do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:password_digest) }
-    it { should validate_presence_of(:session_token) }
     it { should validate_length_of(:password) }
     it { should validate_presence_of(:email_address) }
     it { should have_many(:orders) }
@@ -23,6 +21,6 @@ describe :User, :type => :model do
     user.password = '123456'
     expect {
     User.create!(first_name: 'Bob', email_address: "cscov@gmail.com")
-    }.to raise_error
+  }.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
