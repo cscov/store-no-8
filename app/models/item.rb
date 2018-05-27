@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates :name, :price, presence: true
+  validates :name, presence: true
 
   has_many :order_items
 
