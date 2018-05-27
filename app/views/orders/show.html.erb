@@ -1,8 +1,15 @@
 <h1><%=@order.id%></h1>
 <section>
-  <%@order.items.each do |item| %>
-    <%= item.name %>
-    <%= item.price %>
-  <% end %>
+  <ul>
+    <%@order.items.each do |item| %>
+      <li>
+        <%= item.name %>
+        <%= item.price %>
+      </li>
+    <% end %>
+  </ul>
+</section>
 
+<section>
+  <%= button_to "Edit Order", edit_user_order_url(current_user, @order) %>
 </section>

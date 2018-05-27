@@ -2,12 +2,14 @@
   <h1>Home</h1>
 
   <section>
-    <% if logged_in? %>
-      <%= link_to "Your Orders", user_orders_url(user_id: current_user.id) %>
+    <% if current_user %>
+      <h3><%= link_to "Your Orders", user_orders_url(user_id: current_user.id) %></h3>
+    <% else %>
+      <h3>Please log in to view your orders</h3>
     <% end %>
   </section>
 
   <section>
-    <a href="items"><<h2>Available Items</h2></a>
+    <a href="items"><h3>Available Items</h3></a>
   </section>
 </main>

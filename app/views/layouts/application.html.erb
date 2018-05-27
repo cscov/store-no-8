@@ -10,16 +10,13 @@
 
   <body>
     <% if logged_in? %>
-      <%= Welcome, current_user.first_name %>
+      <span>Welcome, <%= current_user.first_name %></span>
       <%= button_to "Log Out", session_url, method: :delete %>
     <% else %>
       <%= link_to "Sign Up", new_user_url %>
       <%= link_to "Log In", new_session_url %>
-      <% flash[:errors].try(:each) do |err| %>
-        <%= err %>
-      <% end %>
     <% end %>
-    <%= link_to "Home", root %>
+    <%= link_to "Home", root_url %>
     <%= yield %>
   </body>
 </html>

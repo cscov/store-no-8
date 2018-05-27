@@ -1,12 +1,10 @@
-<h1><%= current_user.first_name %>'s Orders'</h1>
+<h1><%= current_user.first_name %>'s Orders</h1>
 
 <section>
   <% if current_user.orders %>
   <ul>
     <% current_user.orders.each do |order| %>
-    <li>
-      <%= order.id %>
-    </li>
+    <li><%= link_to "Order #{order.id}", user_order_url(current_user, order)%></li>
   </ul>
   <% end %>
   <% else %>
@@ -16,5 +14,5 @@
   <% end %>
 </section>
 <section>
-  <%= button_to "Create New Order" "users/#{current_user.id}/orders/new", method: :get %>
+  <%= button_to "Create New Order", new_user_order_url(current_user), method: :get %>
 </section>

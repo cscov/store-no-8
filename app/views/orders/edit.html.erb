@@ -1,2 +1,19 @@
-<h1>Orders#edit</h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
+<h1>Edit Order <%=@order.id%></h1>
+
+<section>
+  <ul>
+    <% @order.items.each do |item| %>
+      <li>
+        <%= item.name %>
+        <%= humanized_money item.price_cents %>
+        <%= button_to "Remove from order", order_item_url(@order) method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <%= @items.each do |item| %>
+
+  <%= end %>
+</section>

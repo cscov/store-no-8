@@ -2,10 +2,10 @@
 <section>
   <ul>
    <% @items.each do |item| %>
-    <li>
-      <span>item.name</span>
-      <span><%=humanized_money item.price_cents%></span>
-    </li>
+    <a href="<%=item_url(item)  %>"><li>
+      <span><%=item.name%></span>
+      <span><%=item.price_cents / 100.00%></span><span> <%= item.price_currency %></span>
+    </li></a>
    <% end %>
   </ul>
 </section>

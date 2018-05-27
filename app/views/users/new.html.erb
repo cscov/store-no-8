@@ -1,4 +1,9 @@
 <h1>Sign Up</h1>
+<section>
+  <% flash[:errors].try(:each) do |err| %>
+    <%= err %>
+  <% end %>
+</section>
 <form action="<%=users_url%>" method="post">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>" />
   <label>First Name

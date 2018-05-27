@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     end
     resource :session, only: %i[new create destroy]
     resources :items, only: %i[index show]
-    
+    resources :order_items, only: %i[create destroy]
+
     root to: 'static_pages#root'
   end
 
