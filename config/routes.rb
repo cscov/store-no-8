@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     resources :users, only: %i[new create] do
-      resources :orders
+      resources :orders, except: %i[new update]
     end
     resource :session, only: %i[new create destroy]
     resources :items, only: %i[index show]

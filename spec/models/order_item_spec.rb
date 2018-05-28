@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'rspec'
 
 RSpec.describe OrderItem, type: :model do
   it { should validate_presence_of(:order_id) }

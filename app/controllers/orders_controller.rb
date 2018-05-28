@@ -22,28 +22,17 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = current_user.orders.find(params[:id])
-  end
-
-  def update
-    @order = Order.find(params[:id])
-    if @order.update_attributes
-      redirect_to user_order_url(@order)
-    else
-      flash[:errors] = @order.errors.full_messages
-      render :edit
-    end
+    @order = current_user.orders.find_by(params[:id], params[:user_id])
   end
 
   def show
-    @order = current_user.orders.find(params[:id])
+    @order = current_user.orders.find_by(params[:id], params[:user_id])
   end
 
   def destroy
-    debugger
-    order = current_user.orders.find(params[:id])
-    order.destroy!
-    redirect_to user_orders_url
+    @order = current_user.orders.find_by(id: params[:id], user_id: params[:user_id])
+    @order.destroy if @order.order_status != "completed"
+    redirect_to user_orders_url(current_user)
   end
 
 
