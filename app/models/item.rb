@@ -7,6 +7,6 @@ class Item < ApplicationRecord
            through: :order_items,
            source: :order
 
-  monetize :price_cents
+  monetize :price_cents #required for money-rails library
 
 end
