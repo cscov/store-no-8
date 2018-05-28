@@ -8,11 +8,9 @@
   </ul>
   <% end %>
   <% else %>
-  <p>
-    You don't have any orders yet!
-  </p>
+  <p>You don't have any orders yet!</p>
   <% end %>
 </section>
 <section>
-  <%= button_to "Create New Order", new_user_order_url(current_user), method: :get %>
+  <%= button_to "Create New Order", user_orders_url(current_user), method: :post %>
 </section>
