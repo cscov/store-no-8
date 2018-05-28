@@ -1,3 +1,4 @@
+require 'byebug'
 class OrdersController < ApplicationController
   before_action :require_login
 
@@ -10,10 +11,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.user_id = current_user.id
+    @order = Order.new
+    @order.user_id = params[:user_id]
     if @order.save
-      redirect_to user_order_url(@order)
+      redirect_to user_order_url(user_id: params[:user_id], id: @order.id)
     else
       flash[:errors] = @order.errors.full_messages
       render :new
@@ -39,10 +40,14 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    debugger
     order = current_user.orders.find(params[:id])
-    delete(order)
+    order.destroy!
     redirect_to user_orders_url
   end
+
+
+  private
 
   def order_params
     params.require(:order).permit(:user_id)
